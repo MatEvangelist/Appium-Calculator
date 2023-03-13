@@ -34,7 +34,7 @@ jobs:
     - name: Prepare Package
       run: mvn -DskipTests -P prepare-for-upload package
     - name: Execute
-      run: appcenter test run appium --app "mribelato-gmail.com/Alpha" --devices "mribelato-gmail.com/lista-s20" --token "af2d27c3a1ebc05b7f8d1ecfc1060116560e219a" --app-path pathToFile.apk --test-series "master" --locale "en_US" --build-dir target/upload
+      run: appcenter test run appium --app "mribelato-gmail.com/Alpha" --devices "mribelato-gmail.com/lista-s20" --token "af2d27c3a1ebc05b7f8d1ecfc1060116560e219a" --app-path src/test/resources/apks/calculadora.apk --test-series "master" --locale "en_US" --build-dir target/upload
    
    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
