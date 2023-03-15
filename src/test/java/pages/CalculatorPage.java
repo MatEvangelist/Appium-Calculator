@@ -1,18 +1,13 @@
 package pages;
 
+import core.BasePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import org.openqa.selenium.support.PageFactory;
-import utils.MobileDriverManager;
 
+import static utils.MobileDriverManager.getMobDriver;
 
-public class CalculatorPage extends MobileDriverManager {
-
-    public CalculatorPage() {
-        PageFactory.initElements(new AppiumFieldDecorator(mobDriver), this);
-    }
+public class CalculatorPage extends BasePage {
 
     @AndroidFindBy(id = "android_field_first_number")
     @iOSXCUITFindBy(id = "apple_first_input")
@@ -45,27 +40,30 @@ public class CalculatorPage extends MobileDriverManager {
     public void typeFirstNumber(String num) {
         first_number.clear();
         first_number.sendKeys(num);
-        mobDriver.label("Digitei o primeiro valor");
+//        super.label("Digitei o primeiro valor");
     }
 
     public void typeSecondNumber(String num2) {
         second_number.clear();
         second_number.sendKeys(num2);
-        mobDriver.label("Digitei o segundo valor");
-
+//        super.label("Digitei o segundo valor");
     }
 
     public String getResult() {
-        mobDriver.label("Cliquei no botão soma");
         return result_text.getText().toString().trim();
+//        getMobDriver().label("Cliquei no botão soma");
     }
+
 
     public void closeKeyboard() {
-        mobDriver.hideKeyboard();
+        super.hideKeyBoard();
     }
 
-    public void sum(){
+    public void sum() {
         button_sum.click();
     }
 
+    public void getWait(int num) {
+        super.getWait(num);
+    }
 }
