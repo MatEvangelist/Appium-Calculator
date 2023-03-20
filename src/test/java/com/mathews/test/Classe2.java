@@ -1,16 +1,23 @@
-package test;
+package com.mathews.test;
 
 import com.microsoft.appcenter.appium.Factory;
 import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.JUnitCore;
 
-public class Test {
+public class Classe2 {
 
     @Rule
     public TestWatcher watcher = Factory.createWatcher();
 
+
     public static void main(String[] args) {
-        JUnitCore.main("test.Runner");
+
+    }
+
+    @Test
+    public void teste() {
+        JUnitCore.main("com.mathews.test.Runner");
     }
 }

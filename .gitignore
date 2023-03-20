@@ -1,5 +1,5 @@
 .idea
-/target/*
-/Mobile.iml
+/target
+.iml
 /package-lock.json
-/src/test/resources/properties/
+/mobileProperties

@@ -1,5 +1,6 @@
-package utils;
+package com.mathews.core;
 
+import com.mathews.utils.MobileProperties;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
@@ -14,7 +15,7 @@ public class AppiumServerConfig {
     private static DesiredCapabilities cap;
 
     public static void startServer() {
-        if (service != null) {
+        if (service == null) {
             //Set Capabilities
             cap = new DesiredCapabilities();
             cap.setCapability("noReset", "false");

@@ -1,6 +1,6 @@
-package steps;
+package com.mathews.steps;
 
-import utils.MobileProperties;
+import com.mathews.utils.MobileProperties;
 
 public class BaseSteps {
 

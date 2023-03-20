@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.mathews</groupId>
     <artifactId>AppCenter</artifactId>
     <version>1.0-SNAPSHOT</version>
     <repositories>
@@ -13,18 +13,40 @@
             <url>https://jcenter.bintray.com/</url>
         </repository>
     </repositories>
+
     <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
     </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.trivago.rta</groupId>
+                <artifactId>cluecumber-report-plugin</artifactId>
+                <version>2.6.1</version>
+                <executions>
+                    <execution>
+                        <id>report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>reporting</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <customCss>src/test/resources/custom.css</customCss>
+                    <sourceJsonReportDirectory>${project.build.directory}/report</sourceJsonReportDirectory>
+                    <generatedHtmlReportDirectory>${project.build.directory}/report</generatedHtmlReportDirectory>
                 </configuration>
             </plugin>
         </plugins>
@@ -36,11 +58,13 @@
             <artifactId>appium-test-extension</artifactId>
             <version>1.6</version>
         </dependency>
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
+
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -50,22 +74,19 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.0.0</version>
-            <scope>test</scope>
+            <version>5.7.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.0.0</version>
-            <scope>test</scope>
+            <version>5.7.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
-            <version>7.0.0</version>
-            <scope>test</scope>
+            <version>5.7.0</version>
         </dependency>
 
         <dependency>
@@ -78,7 +99,24 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.9.1</version>
-            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.trivago.rta</groupId>
+            <artifactId>cluecumber-report-plugin</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rajatthareja</groupId>
+            <artifactId>reportbuilder</artifactId>
+            <version>1.0.3</version>
         </dependency>
 
     </dependencies>
@@ -99,6 +137,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>ios</id>
             <build>
@@ -115,6 +154,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>ios-simulator</id>
             <build>
@@ -131,6 +171,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>prepare-for-upload</id>
             <build>
@@ -155,6 +196,7 @@
                             </execution>
                         </executions>
                     </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-help-plugin</artifactId>
@@ -172,6 +214,7 @@
                             </execution>
                         </executions>
                     </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -183,7 +226,7 @@
                                     <goal>testResources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>${project.build.directory}/upload/test-classes</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/upload/com.mathews.test-classes</outputDirectory>
                                     <resources>
                                         <resource>
                                             <directory>

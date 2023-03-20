@@ -1,19 +1,19 @@
-package test;
+package com.mathews.test;
 
-
-import org.junit.After;
-import org.junit.Before;
-import pages.CalculatorPage;
-import steps.BaseSteps;
-import utils.MobileDriverManager;
+import com.mathews.core.MobileDriverManager;
+import com.mathews.pages.CalculatorPage;
+import com.mathews.steps.BaseSteps;
 import com.microsoft.appcenter.appium.Factory;
-import org.junit.rules.TestWatcher;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
+import org.junit.rules.TestWatcher;
+
 import java.io.IOException;
+import java.net.MalformedURLException;
 
-import static org.junit.Assert.assertTrue;
-
-public class Classe extends BaseSteps {
+public class Test extends BaseSteps {
 
     @Rule
     public TestWatcher watcher = Factory.createWatcher();
@@ -33,13 +33,13 @@ public class Classe extends BaseSteps {
     }
 
     @org.junit.Test
-    public void calc(){
+    public void calc() throws MalformedURLException {
         CalculatorPage calc = new CalculatorPage();
         calc.typeFirstNumber("5");
         calc.typeSecondNumber("5");
         calc.closeKeyboard();
         calc.sum();
-        assertTrue(calc.getResult().equals("10"));
+        Assert.assertTrue(calc.getResult().equals("10"));
     }
 
 }
